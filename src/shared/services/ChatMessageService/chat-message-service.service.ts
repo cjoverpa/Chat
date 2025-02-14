@@ -17,7 +17,7 @@ export class ChatMessageServiceService {
     const newMessageRef = push(this.messagesRef);
     set(newMessageRef, {
       user: 'Welcome',
-      timestamp: newDate ,
+      timestamp: newDate,
       content: 'Chat works! Start chatting',
     })
       .then(() => console.log('Message sent to Firebase Database'))
@@ -33,25 +33,26 @@ export class ChatMessageServiceService {
     const messageRef = ref(this.database, 'messages');
 
     return new Observable<ChatMessage[]>((subscriber) => {
-      onValue(messageRef, (snapshot) =>{
-        const data: ChatMessage = snapshot.val();
-        const messages = this.convertFirebaseObjectToArray(data);
-        subscriber.next(messages);
-      }, (error) => {
-        subscriber.error(error);
-      });
+      onValue(
+        messageRef,
+        (snapshot) => {
+          const data: ChatMessage = snapshot.val();
+          const messages = this.convertFirebaseObjectToArray(data);
+          subscriber.next(messages);
+        },
+        (error) => {
+          subscriber.error(error);
+        },
+      );
     });
-
   }
 
-  convertFirebaseObjectToArray(data: ChatMessage): ChatMessage[]{
-    if(!data) return [];
+  convertFirebaseObjectToArray(data: ChatMessage): ChatMessage[] {
+    if (!data) return [];
     return Object.values(data).map((item: ChatMessage) => ({
       user: item.user || 'Unknown',
       content: item.content || '',
       timestamp: item.timestamp || '',
     }));
   }
-
-
 }

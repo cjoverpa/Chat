@@ -9,7 +9,7 @@ import { AuthService } from 'src/shared/services/AuthService/auth.service';
   selector: 'chat-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [IonContent],
+  imports: [],
 })
 export class HeaderComponent implements OnInit {
   private readonly auth = inject(AuthService);
