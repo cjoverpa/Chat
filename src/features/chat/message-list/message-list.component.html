@@ -1,0 +1,11 @@
+<ion-list>
+  @for (message of displayedMessages; track $index) {
+    <ion-item>
+      <b>{{ message.user }} </b
+      > (📍{{position.latitude}} , {{position.longitude}}): {{ message.content }}
+    </ion-item>
+  }
+</ion-list>
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreMessages($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading messages..."></ion-infinite-scroll-content>
+</ion-infinite-scroll>

@@ -1,0 +1,9 @@
+<div class="login-container">
+  <h2>Chat Online</h2>
+  <img src="../assets/images/chatImage.jpg" alt="Tablet with text bubbles and people chatting ">
+  <p><a href="https://www.freepik.com/author/vectorjuice" target="_blank" rel="noopener"> Designed by vectorjuice </a></p>
+  <button class="login-button"(click)="loginWithGoogle()">Login con Google</button>
+  @if (errorMessage) {
+  <div class="error">{{errorMessage}}</div>
+  }
+</div>

@@ -1,0 +1,11 @@
+
+<div class="chat-input-container">
+  <input
+    type="text"
+    placeholder="Write whatever... "
+    class="chat-input"
+    [(ngModel)]="messageInput"
+    [ngModelOptions]="{ standalone: true }"
+  />
+  <ion-button class="chat-send-btn" (click)="sendMessage()">Send</ion-button>
+</div>
